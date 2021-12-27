@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>clases2</title>
+</head>
+<body>
+	<h1>Clases2</h1>
+
+	Ingrese dato: <input type="text" name="dato" id="dato">
+	Ingrese dato2: <input type="text" name="dato2" id="dato2">
+	<button onclick="agregar();">Agregar</button>
+	<p id="clase1">
+		
+	</p>
+
+	<script type="text/javascript">
+			class elemento{
+				constructor(v1,v2){
+					this.valor1=v1;
+					this.valor2=v2;
+				}
+				suma(){
+					let sum=parseInt(this.valor1)+parseInt(this.valor2);
+					return sum;
+				}
+			}
+
+
+		function agregar(){
+			let v1=document.getElementById('dato').value;
+			let v2=document.getElementById('dato2').value;
+			var ele=new elemento(v1,v2);
+			let res=ele.suma();
+			document.getElementById('clase1').innerHTML=res;
+
+
+		}
+		
+
+
+	</script>
+
+</body>
+</html>
