@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Clases</title>
+</head>
+<body>
+	<h1>Clases en Javascript</h1>
+
+	Nombre: <input type="text" name="nom" id="nom">
+	Año: <input type="text" name="agno" id="agno">
+	Fabricante: <input type="text" name="fab" id="fab">
+	Valor: <input type="text" name="valor" id="valor">
+	<button onclick="ingresar();">Ingresar</button>
+	<p id="res"></p>
+
+	<script type="text/javascript">
+		class producto{
+			constructor(v1,v2,v3,v4){
+				this.valor1=v1;
+				this.valor2=v2;
+				this.valor3=v3;
+				this.valor4=v4;
+			}
+			imprimir(){
+				let imp=this.valor1+" - "+this.valor2+" - "+this.valor3+" - "+this.valor4;
+				return imp;
+			}
+		}
+
+		function ingresar(){
+			let v1=document.getElementById('nom').value;
+			let v2=document.getElementById('agno').value;
+			let v3=document.getElementById('fab').value;
+			let v4=document.getElementById('valor').value;
+			var dates=new producto(v1,v2,v3,v4);
+			let res=dates.imprimir();
+			document.getElementById('res').innerHTML=res;
+		}
+
+	</script>
+
+</body>
+</html>
