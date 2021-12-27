@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h1>Clases</h1>
+	<p id="cla1">
+		
+	</p>
+	<p id="cla2">
+		
+	</p>
+	<p id="cla3">
+		
+	</p>
+	<p id="cla4">
+		
+	</p>
+
+	<script type="text/javascript">
+		class car{
+			constructor(name,year){
+				this.name=name;
+				this.year=year;
+			}
+
+			
+		}
+
+		var auto1=new car("citroneta",1980);
+		document.getElementById('cla1').innerHTML=auto1.name+" - "+auto1.year;
+		var auto2=new car("fito",1982);
+		document.getElementById('cla2').innerHTML=auto2.name+" - "+auto2.year;
+		var auto3=new car();
+		auto3.name="for";
+		auto3.year=1990;
+		document.getElementById('cla3').innerHTML=auto3.name+" - "+auto3.year;
+
+	</script>
+
+</body>
+</html>
