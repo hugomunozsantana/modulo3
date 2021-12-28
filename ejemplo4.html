@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>callback</title>
+</head>
+<body>
+	<h1>ejemplo de callback asincrónico</h1>
+	<p id="ejem"></p>
+
+
+
+	<script type="text/javascript">
+		function interface(some){
+			document.getElementById('ejem').innerHTML=some;
+		}
+
+		function calc(n1,n2,mycallback){
+			let sum=n1+n2;
+			mycallback(sum);
+		}
+
+		calc(5,3,interface);
+		
+	</script>
+</body>
+</html>
