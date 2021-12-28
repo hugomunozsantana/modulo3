@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h1>Ejemplo de objeto</h1>
+
+	<p id="ex"></p>
+
+	<script type="text/javascript">
+		
+		var obj={
+			nom:"pedro",
+			edad:10,
+			dir:"su casas",
+			mostrar:function(){
+				return this.nom+" - "+this.edad+" - "+this.dir;
+			}
+		};
+
+		document.getElementById('ex').innerHTML=obj.mostrar();
+	</script>
+
+</body>
+</html>
