@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>IVA</title>
+</head>
+<body>
+	<h1>Cálculo de IVA</h1>
+
+	Ingrese monto bruto: <input type="text" name="monto" id="monto">
+	<button onclick="calcular();">Calcular</button>
+	<p id="res"></p>
+
+	<script type="text/javascript">
+		class iva{
+			constructor(v1){
+				this.ivva=v1;
+			}
+			calculo(){
+				let val=parseInt(this.ivva);
+				let res=val*0.19;
+				return res;
+			}
+
+			}
+			function calcular(){
+				let obj=new iva();
+				let v=document.getElementById('monto').value;
+				obj.ivva=v;
+				document.getElementById('res').innerHTML="El iva a pagar es: "+obj.calculo();
+		}
+
+	</script>
+</body>
+</html>
