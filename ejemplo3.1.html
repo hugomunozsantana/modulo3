@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h1>Ejemplo de objeto</h1><br>
+
+	Ingrese nombre: <input type="text" name="nom" id="nom"><br>
+	Ingrese nombre: <input type="text" name="edad" id="edad"><br>
+	Ingrese nombre: <input type="text" name="dir" id="dir"><br>
+	<button onclick="cargar();">Ingresar</button>
+
+	<p>
+		<table border="1">
+			<tr>
+				<td>
+					<table border="1" id="t1">
+
+					</table>
+
+				</td>
+				<td>
+					<table border="1" id="t2">
+
+					</table>
+
+				</td>
+			</tr>
+		</table>
+	</p>
+
+
+	
+
+	<script type="text/javascript">
+
+		function cargar(){
+			let no=document.getElementById('nom').value;
+			let ed=document.getElementById('edad').value;
+			let di=document.getElementById('dir').value;
+			let ele=new elemento(no,ed,di);
+			let obja=obj;
+			obja.nom=no;
+			obja.edad=ed;
+			obja.dir=di;
+			document.getElementById('t1').innerHTML=ele.mostrar();
+			document.getElementById('t2').innerHTML=obja.mostrar();
+		}
+
+		class elemento{
+			constructor(v1,v2,v3){
+				this.nom=v1;
+				this.edad=v2;
+				this.dir=v3;
+			}
+			mostrar(){
+				return "<tr><td>"+this.nom+"</td><td>"+this.edad+"</td><td>"+this.dir+"</td></tr>"; 
+			}
+		}
+		
+		var obj={
+			nom:"pedro",
+			edad:10,
+			dir:"su casas",
+			mostrar:function(){
+				return "<tr><td>"+this.nom+"</td><td>"+this.edad+"</td><td>"+this.dir+"</td></tr>";
+			}
+		};
+
+		
+
+	</script>
+
+</body>
+</html>
