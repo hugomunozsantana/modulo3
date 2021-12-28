@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ejemplo de callback de otra página</title>
+</head>
+<body>
+	<h1>call back</h1><br>
+	<p id="ejem"></p>
+
+	<script type="text/javascript">
+		function interface(some){
+			document.getElementById('ejem').innerHTML=some;
+		}
+
+		function getArchivo(myllamada){
+			let req=new XMLHttpRequest();
+			req.open('GET','otro.html');
+			req.onload=function(){
+				alert("aqui");
+				if (req.status==200){
+					myllamada(this.responseText);
+				}else{
+					myllamada("error: "+req.status);
+				}
+			}
+			req.send();
+		}
+		getArchivo(interface);
+
+	</script>
+
+</body>
+</html>
