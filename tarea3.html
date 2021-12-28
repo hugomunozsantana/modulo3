@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Radio</title>
+</head>
+	
+<body>
+	<h1>Cálculo de radio</h1>
+
+	Ingrese el radio: <input type="text" name="radio" id="radio">
+	<button onclick="calcular();">Calcular</button>
+	<p id="res1"></p>
+	<p id="res2"></p>
+	<p id="res3"></p>
+
+	<script type="text/javascript">
+		class radio{
+			constructor(v1){
+				this.radio1=v1;
+			}
+			diametro(){
+				let valor=parseInt(this.radio1);
+				let dia=2*valor;
+				return dia;
+			}
+			perimetro(){
+				let valor2=parseInt(this.radio1);
+				let per=2*Math.PI*valor2;
+				return per;
+			}
+			area(){
+				let valor3=parseInt(this.radio1);
+				let area=Math.PI*Math.pow(valor3,2);
+				return area;
+			}
+		}
+		function calcular(){
+			let obj=new radio();
+			let vv1=document.getElementById('radio').value;
+			obj.radio1=vv1;
+			document.getElementById('res1').innerHTML="El diametro del radio es: "+obj.diametro();
+			document.getElementById('res2').innerHTML="El perimetro del radio es: "+obj.perimetro().toFixed(2);
+			document.getElementById('res3').innerHTML="El área del radio es: "+obj.area().toFixed(2);
+		}
+
+
+	</script>
+
+</body>
+</html>
