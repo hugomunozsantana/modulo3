@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<button onclick="llamar();">Cargar</button><br>
+	<p id="txt"></p>
+
+	<script type="text/javascript">
+		function llamar(){
+			document.getElementById('txt').innerHTML="espere un poquito viene altiro...!!!";
+			setTimeout(call,5000);
+
+		}
+
+		function call(){
+			document.getElementById('txt').innerHTML="Llegué...!!!";
+
+		}
+
+
+	</script>
+</body>
+</html>
