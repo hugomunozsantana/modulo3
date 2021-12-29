@@ -6,7 +6,7 @@
 	<title></title>
 </head>
 <body>
-	<p id="ej1"></p>
+	<p id="ej1"></p><br>
 	<p id="ej2"></p>
 
 	<script type="text/javascript">
@@ -21,22 +21,24 @@
 			req1.open('GET','otro.html');
 			req1.onload=function(){
 				if (req1.status==200){
-					myResolve(req1.response);
+					setTimeout(function(){
+						myResolve(req1.response);
+				},2000);
 				}else{
 					myReject("Archivo no encontrado");
 				}
 			}
 			req1.send();
-		});
-
-		
+		});	
 
 		let promesa2=new Promise(function(myResolve,myReject){
 			let req1=new XMLHttpRequest();
 			req1.open('GET','otro2.html');
 			req1.onload=function(){
 				if (req1.status==200){
-					myResolve(req1.response);
+					setTimeout(function(){
+						myResolve(req1.response);
+					},4000);
 				}else{
 					myReject("Archivo no encontrado");
 				}
@@ -55,10 +57,10 @@
 
 		promesa2.then(
 			function(value){
-				interface(value);
+				interface2(value);
 			},
 			function(error){
-				interface(error);
+				interface2(error);
 			}
 		);
 
