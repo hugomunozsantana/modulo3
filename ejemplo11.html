@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>promise con tiempo de espera</title>
+</head>
+<body>
+	<h1 id="ejem"></h1>
+
+	<script type="text/javascript">
+		const promesa=new Promise(function(MyResolve,myReject){
+			setTimeout(function(){
+				MyResolve("terminó la espera...!!!");
+			},3000);
+		});
+		promesa.then(function(value){
+			document.getElementById('ejem').innerHTML=value;
+		});
+	</script>
+
+</body>
+</html>
