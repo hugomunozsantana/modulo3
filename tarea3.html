@@ -9,11 +9,18 @@
 <body>
 	<h1>Cálculo de radio</h1>
 
-	Ingrese el radio: <input type="text" name="radio" id="radio">
+	Ingrese el radio: <input type="number" name="radio" id="radio">
 	<button onclick="calcular();">Calcular</button>
 	<p id="res1"></p>
 	<p id="res2"></p>
 	<p id="res3"></p>
+
+	<p>__________________________________________________________________________________________________________</p><br>
+
+	Ingrese monto bruto: <input type="number" name="monto" id="monto">
+	<button onclick="calcular2();">Calcular</button>
+	<p id="res"></p>
+
 
 	<script type="text/javascript">
 		class radio{
@@ -43,6 +50,24 @@
 			document.getElementById('res1').innerHTML="El diametro del radio es: "+obj.diametro();
 			document.getElementById('res2').innerHTML="El perimetro del radio es: "+obj.perimetro().toFixed(2);
 			document.getElementById('res3').innerHTML="El área del radio es: "+obj.area().toFixed(2);
+		}
+
+		class iva{
+			constructor(v1){
+				this.valiva=v1;
+			}
+			calculo(){
+				let val=parseInt(this.valiva);
+				let res=val*0.19;
+				return res;
+			}
+
+			}
+			function calcular2(){
+				let obj=new iva();
+				let v=document.getElementById('monto').value;
+				obj.valiva=v;
+				document.getElementById('res').innerHTML="El valor del iva a pagar es: "+obj.calculo();
 		}
 
 
