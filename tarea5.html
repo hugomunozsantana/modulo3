@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	<button onclick="interface();">Presione para acceder</button>
+	<p id="page"></p>
+
+	<script type="text/javascript">
+		function interface(algo){
+			document.getElementById('page').innerHTML=algo;			
+		}
+		let promesa1=new Promise(function(myResolve,myReject){
+			let req1=new XMLHttpRequest();
+			req1.open('GET','otro.html');
+			req1.onload=function(){
+				if (req1.status==200){
+					setTimeout(function(){
+						myResolve(req1.response);
+				},2000);
+				}else{
+					myReject("Archivo no encontrado");
+				}
+			}
+			req1.send();
+		});	
+
+		promesa1.then(
+			function(value){
+				interface(value);
+			},
+			function(error){
+				interface(error);
+			}
+		);
+	</script>
+
+</body>
+</html>
