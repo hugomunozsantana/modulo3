@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>promise con llamado de página externa</title>
+</head>
+<body>
+	<p id="demo"></p>
+
+	<script type="text/javascript">
+		function interface(some){
+			document.getElementById('demo').innerHTML=some;
+		}
+
+		let promesa=new Promise(function(myResolve,myReject){
+			let req=new XMLHttpRequest();
+			req.open('GET','otro.html');
+			req.onload=function(){
+				if (req.status==200){
+					myResolve(req.response);
+				}else{
+					myReject("error, archivo no encontrado...!!!");
+				}
+			};
+			req.send();
+
+		});
+
+		promesa.then(
+			function(value){
+				interface(value);
+			},
+			function(error){
+				interface(error);
+			}
+
+		);
+	</script>
+
+</body>
+</html>
