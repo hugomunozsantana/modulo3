@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h1 id="ejemplo"></h1>
+
+	<script type="text/javascript">
+		setInterval(hora,1000);
+		let fecha=new Date();
+		let cont=fecha.getFullYear();
+		cont+="-"+(fecha.getMonth()+1);
+		cont+="-"+fecha.getDate();
+		function hora(){
+			let dia=new Date();
+			let tex=cont+" // "+dia.getHours()+":"+dia.getMinutes()+":"+dia.getSeconds();
+			document.getElementById('ejemplo').innerHTML=tex;
+
+		}
+
+	</script>
+
+</body>
+</html>
