@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Bodega</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	 crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container pt-3">
+		<div class="p-3 bg-info text-center">
+			<h1> Bodega de Juan</h1>
+
+		</div><br>
+    <div id="tablaIngProd" name="tablaIngProd">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nombre item</th>
+        <th>Familia</th>
+        <th>Valor (en pesos)</th>
+        <th>Cantidad</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input required type="text" name="nomprod" id="nomprod"></td>
+          <td><input required type="text" name="famprod" id="famprod"></td>
+          <td><input required type="number" name="precprod" id="precprod"></td>
+          <td><input required type="number" name="cantprod" id="cantprod"></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <br>
+      <div class="row">
+      <div class="col">
+        <!--Boton de ingreso de productos-->
+        <button class="btn btn-primary" onclick="ingresar();" id="botIngresar" name="botIngresar">Ingresar</button>
+        </div>
+      <div class="col">
+        <!--Boton para activar el modo de sacar productos-->
+        <button class="btn btn-danger" onclick="actModoSalida();" id="botActSal" name="botActSal" >Entrar modo salida</button>
+        </div>
+      </div>
+    <!-- inicio de opcion para modificar-->
+    <div class="container bg-danger text-light" id="contSalida" name="contSalida" hidden>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nombre Producto a descontar</th>
+        <th>Cantidad a descontar</th>
+      </tr>
+      <tr>
+        <td><input required type="text" name="nomProdSac" id="nomProdSac"></td>
+        <td><input required type="number" name="cantProdSac" id="cantProdSac"></td>
+      </tr>
+      </thead>
+    </table>
+    </div>
+    <br>
+      <div class="row">
+      <div class="col">
+        <!--Boton de salida de productos-->
+        <button class="btn btn-danger" onclick="descontar();" id="botSacar" name="botSacar" hidden>Descontar</button>
+      </div>
+      <div class="col">
+        <!--Boton para volver al modo de ingreso de productos-->
+        <button class="btn btn-warning" onclick="desactModoSalida();" id="botDesSal" name="botDesSal" hidden>Volver Modo Ingreso</button>
+      </div>
+      </div>
+    <br><br>
+    <!-- Inicio de insercion de tabla -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Reg</th>
+          <th>Nombre item</th>
+          <th>Familia</th>
+          <th>Valor (en pesos)</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody id="ar">
+      </tbody>
+        <tr>
+          <td colspan="3"><div style="text-align:center"><strong>TOTALES</strong></div></td>
+          <td><strong><span id="totalPrecio" name="totalPrecio"></strong></span></td>
+          <td><strong><span id="totalCantidad" name="totalCantidad"></strong></span></td>
+        </tr>
+        <tr>
+          <td colspan="3"><div style="text-align:center"><strong>IVA</strong></div></td>
+          <td><strong><span id="iva1" name="iva1"></strong></span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="3"><div style="text-align:center"><strong>TOTAL CON IVA</strong></div></td>
+          <td><strong><span id="total1" name="total1"></strong></span></td>
+          <td></td>
+        </tr>
+    </table>
+    </div>
+    <br>
+    </div>
+    <script type="text/javascript">
+    var nombre=[];
+    var fam=[];
+    var vunitario=[];
+    var cant=[];
+    function ingresar(){
+      let newnombre=document.getElementById('nomprod').value;
+      let newfam=document.getElementById('famprod').value;
+      let newprecio=document.getElementById('precprod').value;
+      let newcantidad=document.getElementById('cantprod').value;
+        nombre.push(newnombre);
+        document.getElementById('nomprod').value="";
+        fam.push(newfam);
+        document.getElementById('famprod').value="";
+        vunitario.push(newprecio);
+        document.getElementById('precprod').value="";
+        cant.push(newcantidad);
+        document.getElementById('cantprod').value="";
+        llenar();
+        prodEnBodega();
+        totEnBodega();
+    }
+    function descontar(){
+      let prodBusc=document.getElementById('nomProdSac').value; //buscar producto a sacar
+      if(contiene(prodBusc,nombre)){
+        //alert("Existe en el registro "+nombre.indexOf(prodBusc));
+        let posReg=nombre.indexOf(prodBusc);
+        let cantDesc=parseInt(document.getElementById('cantProdSac').value);
+        //alert("posReg :"+posReg+" Cantidad a descontar :"+cantDesc+ "Cantidad en registro :"+cant[posReg]);
+        if(cant[posReg]>=cantDesc){
+          //alert("Se puede descontar");
+          let newCantidad=cant[posReg] - cantDesc;
+          cant[posReg]=newCantidad;
+          llenar();
+          prodEnBodega();
+          totEnBodega();
+        }else{
+          alert("No existe inventario suficiente para descontar");
+        }
+      }else{
+        alert("No existe");
+      }
+
+    }  
+    function llenar(){
+            let fragmento="";
+            for (var i=0; i< nombre.length; i++){
+                  fragmento+="<tr><td>"+i+"</td><td>"+nombre[i]+"</td><td>" +fam[i]+"</td><td>"+vunitario[i]+"</td><td>"+cant[i] +"</td>";
+            }
+            fragmento+="</tr>";
+            document.getElementById('ar').innerHTML=fragmento;
+        }
+    function prodEnBodega(){
+      let totprods=0;
+      for (var p=0;p<cant.length; p++){
+          let pv=parseInt(cant[p],10);
+          totprods=totprods+pv;
+          document.getElementById('totalCantidad').innerHTML=totprods;
+      }
+    }
+    function totEnBodega(){
+      let totbod=0;
+      for (var q=0;q<vunitario.length;q++){
+        let qv1=parseInt(cant[q],10);
+        let qv2=parseInt(vunitario[q],10);
+        let calciva=0;
+        totbod=totbod+(qv1*qv2);
+        calciva=calciva+iva(totbod);
+        document.getElementById('totalPrecio').innerHTML=totbod;
+        document.getElementById('iva1').innerHTML=calciva;
+        document.getElementById('total1').innerHTML=totbod+calciva;
+      }
+    }
+    function iva(v1){
+      let res=0;
+      const valorIVA=0.19;
+      res=v1*valorIVA;
+      return res;
+    }
+    function actModoSalida(){
+      document.getElementById('contSalida').hidden=false;
+      document.getElementById('botIngresar').hidden=true;
+      document.getElementById('botSacar').hidden=false;
+      document.getElementById('botActSal').hidden=true;
+      document.getElementById('botDesSal').hidden=false;
+      document.getElementById('tablaIngProd').hidden=true;
+    }
+    function desactModoSalida(){
+      document.getElementById('contSalida').hidden=true;
+      document.getElementById('botSacar').hidden=true;
+      document.getElementById('botIngresar').hidden=false;
+      document.getElementById('botActSal').hidden=false;
+      document.getElementById('botDesSal').hidden=true;
+      document.getElementById('tablaIngProd').hidden=false;
+    }
+    function contiene(cadena, arreglo){
+			 //si "cadena" se encuentra en "arreglo" devuelve true, en caso contrario devuelve false
+			 return(arreglo.indexOf(cadena) > -1);
+		 }
+    </script>
+  </body>
+</html>
