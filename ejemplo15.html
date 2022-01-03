@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ejemplo Async - Await</title>
+</head>
+<body>
+	<h1>Ejemplo Async - Await</h1>
+	<p id="demo"></p>
+
+	<script type="text/javascript">
+		function promesa1(){
+			return new Promise((resolve,reject)=>{
+				setTimeout(()=>{
+					resolve("promesa 1");
+					console.log("1");
+				},5000);
+			});
+		}
+		function promesa2(){
+			return new Promise((resolve,reject)=>{
+				setTimeout(()=>{
+					resolve("promesa 2");
+					console.log("2");
+				},8000);
+			});
+		}
+		function promesa3(){
+			return new Promise((resolve,reject)=>{
+				setTimeout(()=>{
+					resolve("promesa 3");
+					console.log("3");
+				},10000);
+			});
+		}
+	
+
+		async function llamada(){
+var [primera,segunda,tercera]=await Promise.all([promesa1(),promesa2(),promesa3()]);
+		/*	var primera=await promesa1();
+			var segunda=await promesa2();
+			var tercera=await promesa3();*/
+			
+			console.log(primera);
+			console.log(segunda);
+			console.log(tercera);
+			
+
+		}
+		llamada();
+
+	</script>
+
+</body>
+</html>
