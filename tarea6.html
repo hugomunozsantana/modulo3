@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ejemplo Async - Await</title>
+</head>
+<body>
+	<h1>Ejemplo Async - Await</h1><br>
+	<p>Este es un ejemplo de una función Async - Await</p>
+	<p id="llamada"></p>
+
+	<script type="text/javascript">
+		async function llamarPagina(){
+			let promesa=new Promise(function(resolve){
+				let req=new XMLHttpRequest();
+				req.open('GET','tienda.html');
+				req.onload=function(){
+					if(req.status==200){
+						resolve(req.response);
+					}else{
+						resolve("error, archivo no encontrado");
+					}
+				}
+				req.send();
+			});
+			document.getElementById('llamada').innerHTML=await promesa;
+		}
+		llamarPagina();
+
+	</script>
+
+</body>
+</html>
