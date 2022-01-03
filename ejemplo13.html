@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ejemplo async - await</title>
+</head>
+<body>
+	<h1>Ejemplo Async - Await</h1>
+	<p id="demo"></p>
+
+	<script type="text/javascript">
+		async function getFile(){
+			let promesa=new Promise(function(resolve){
+				let req=new XMLHttpRequest();
+				req.open('GET','otro.html');
+				req.onload=function(){
+					if(req.status==200){
+						resolve(req.response);
+					}else{
+						resolve("error, archivo no encontrado");
+					}
+				}
+				req.send();
+			});
+			document.getElementById('demo').innerHTML=await promesa;
+		}
+		getFile();
+
+	</script>
+
+</body>
+</html>
