@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Try & Catch</title>
+</head>
+<body>
+	<h1>Try & Catch</h1>
+	<br>
+	Valor 1:<input type="text" name="v1" id="v1"><br>
+	Valor 2:<input type="text" name="v2" id="v2"><br>
+	<button onclick="sumar();">calcular</button><br>
+	Resultado:<input type="text" name="res" id="res"><br>
+
+	<script type="text/javascript">
+		function sumar(){
+			let v1=document.getElementById('v1').value;
+			let v2=document.getElementById(v2).value;
+			try{
+				let vv1=parseInt(v1);
+				let vv2=parseInt(v2);
+				let res=vv1+vv2;
+				document.getElementById('res').value=res;
+				if(isNaN(res)){
+					throw "no es un numero";
+				}
+			}catch(err){
+				alert("error: "+err);
+			}finally{
+				alert("ejecución de finally...!!!");
+			}
+		}
+
+	</script>
+
+</body>
+</html>
