@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Try & Catch</title>
+</head>
+<body>
+	<h1>Try & Catch</h1>
+
+	<h2>Ingrese datos del producto</h2>
+
+	Nombre:<input type="text" name="nom" id="nom"><br>
+	Valor unitario:<input type="text" name="val" id="val"><br>
+	Cantidad:<input type="text" name="cant" id="cant"><br>
+	<button onclick="ingresar();">Ingresar</button><br>
+	<p id="result"></p>
+
+	<script type="text/javascript">
+		function ingresar(){
+			let v1=document.getElementById('nom').value;
+			let v2=document.getElementById('val').value;
+			let v3=document.getElementById('cant').value;
+			try{
+				let vv2=parseInt(v2);
+				let vv3=parseInt(v3);
+				if(isNaN(vv2)){
+					throw "Ingrese sólo números en campo 'Valor unitario'";
+				}else if(isNaN(vv3)){
+					throw "Ingrese sólo números en campo 'Cantidad'";
+
+				}else if(v1!="" && vv2>0 && vv3>0){
+					let res=vv2*vv3;
+					alert("Datos ingresados correctamente")
+					alert("El valor total del producto '"+v1+"' es de: "+res);
+					//document.getElementById('result').innerHTML="El valor total del producto '"+v1+"' es de: "+res;
+				}
+			}catch(err){
+				alert("error: "+err);
+			}finally{
+				document.getElementById('nom').value="";
+				document.getElementById('val').value="";
+				document.getElementById('cant').value="";
+			}
+		}
+	</script>
+
+</body>
+</html>
