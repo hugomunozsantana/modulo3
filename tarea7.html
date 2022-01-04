@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Try & Catch</title>
+</head>
+<body>
+	<h1>Try & Catch</h1>
+
+	Ingrese nombre:<input type="text" name="nom" id="nom"><br><br>
+	Ingrese edad:<input type="text" name="edad" id="edad"><br><br>
+	Ingrese E-mail:<input type="text" name="mail" id="mail"><br><br>
+	<button onclick="ingresar();">Ingresar</button>
+	<p id="result"></p>
+
+	<script type="text/javascript">
+		function ingresar(){
+			let v1=document.getElementById('nom').value;
+			let v2=document.getElementById('edad').value;
+			let v3=document.getElementById('mail').value;
+			try{
+				let vv2=parseInt(v2);
+				if(isNaN(vv2)){
+					throw "no es un numero";
+				}else if(v1!="" && v3!="" && v2>0){
+					alert("datos ingresados correctamente");
+					document.getElementById('result').innerHTML=v1+" - "+vv2+" - "+v3;
+				}else{
+					throw "faltan datos, ingrese los datos faltantes";
+				}				
+			}catch(err){
+				alert("error: "+err); 
+			}
+		}
+	</script>
+
+</body>
+</html>
