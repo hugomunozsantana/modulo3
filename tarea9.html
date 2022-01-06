@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tarea API Rest</title>
+</head>
+<body>
+	<h1>Tarea llamada sincrónica y asincrónica</h1>
+	<button onclick="sincronica();">Cargar página</button>
+	<p id="demo"></p>
+	<br><br>
+	<button onclick="asincronica();">Cargar página</button>
+	<p id="demo2"></p>
+
+
+	<script type="text/javascript">
+		function sumar(){
+			let v1=parseInt(document.getElementById('v1').value);
+			let v2=parseInt(document.getElementById('v2').value);
+			let res=v1+v2;
+			document.getElementById('res').innerHTML=res;
+		}
+
+		function sincronica(){
+			var req=new XMLHttpRequest();
+			req.open("GET","otro4.html",false);
+			req.send(null);
+			if (req.status==200){
+				//console.log(req.responseText);
+				document.getElementById('demo').innerHTML=req.responseText;
+			}
+		}
+		//sincronica();
+		function asincronica(){
+			var req=new XMLHttpRequest();
+			req.open('GET','otro4.html',true);
+			req.onreadystatechange=function(aEvt){
+				console.log(aEvt);
+				if(req.readyState==4){
+					if (req.status==200){
+						document.getElementById('demo2').innerHTML=req.responseText;
+
+					}else{
+						document.getElementById('demo2').innerHTML="error cargando pagina";
+					}
+				}	
+			};
+			req.send(null);
+		}
+	</script>
+
+</body>
+</html>
