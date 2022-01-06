@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JSON</title>
+</head>
+<body>
+	<h1>Recepción de datos JSON</h1>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+
+	<script type="text/javascript">
+		//rescatamos los parametros completos como una sola cosa
+		const valores=window.location.search;
+		//lo transformamos en una colección de datos
+		const urlparam=new URLSearchParams(valores);
+		//los extraemos por el nombre del parámetro
+		let myjson=urlparam.get('x');//parametro "x"
+		let otro=urlparam.get('otro');//parámetro "otro"
+		//mostramos los valores de los parametros en la web
+		document.getElementById('demo').innerHTML=myjson;
+		document.getElementById('demo2').innerHTML=otro;
+		//transformamos el JSON a objeto de tipo javascript
+		const myobj=JSON.parse(myjson);
+		//mostramos el atributo nombre y edad del objeto
+		document.getElementById('demo3').innerHTML=myobj.nom;
+		document.getElementById('demo4').innerHTML=myobj.edad;
+
+	</script>
+
+</body>
+</html>
