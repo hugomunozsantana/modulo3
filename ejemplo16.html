@@ -16,7 +16,7 @@
 	<script type="text/javascript">
 		function sumar(){
 			let v1=document.getElementById('v1').value;
-			let v2=document.getElementById(v2).value;
+			let v2=document.getElementById('v2').value;
 			try{
 				let vv1=parseInt(v1);
 				let vv2=parseInt(v2);
@@ -24,6 +24,7 @@
 				document.getElementById('res').value=res;
 				if(isNaN(res)){
 					throw "no es un numero";
+					//throw new TypeError("error de valor no numerico...!!!!");
 				}
 			}catch(err){
 				alert("error: "+err);
