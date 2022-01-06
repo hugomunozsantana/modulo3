@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>llamada 1</title>
+</head>
+<body>
+	<h1>Llamada sincrónica y asincrónica</h1>
+	<p>Presione el botón para realizar el cálculo matemático</p>
+	<button onclick="asincronica();">presione aquí</button>
+	<p id="res"></p>
+
+	<script type="text/javascript">
+		function asincronica(){
+			var req=new XMLHttpRequest();
+			req.open('GET','otro4.html',true);
+			req.onreadystatechange=function(aEvt){
+				console.log(aEvt);
+				if(req.readyState==4){
+					if (req.status==200){
+						document.getElementById('res').innerHTML=req.responseText;
+					}else{
+						document.getElementById('res').innerHTML="error cargando página";
+					}
+				}	
+			};
+			req.send(null);
+		}
+	</script>
+
+</body>
+</html>
