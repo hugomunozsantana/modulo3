@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<h2>lista de productos</h2><br>
+<p>
+    ingrese nombre de producto: <input type="text" name="nom" id="nom"><br>
+    ingrese valor untarios del producto: <input type="text" name="vun" id="vun"><br>
+    ingrese cantidad a comprar del producto: <input type="text" name="can" id="can"><br>
+    <button onclick="guardar();">insertar</button>
+</p>
+<p id="lista">
+
+</p>
+<script>
+    var lista=[];
+
+    function guardar(){
+        let no=document.getElementById('nom').value;
+        let vu=document.getElementById('vun').value;
+        let ca=document.getElementById('can').value;
+        let obj=new productos(no,vu,ca);
+        lista.push(obj);
+        limpiar();
+        mostrar();
+        //alert("cantidad: "+lista.length);
+    }
+
+    function mostrar(){
+        let texto="<table border='1'>";
+            texto+="<tr>";
+                texto+="<td>Nombre</td>";
+                texto+="<td>Valor UN</td>";
+                texto+="<td>Cantidad</td>";
+                texto+="<td>Total</td>";
+            texto+="</tr>";
+        for(x =0;x<lista.length;x++){
+            texto+="<tr>";
+                texto+="<td>";
+                texto+=lista[x].nombre;
+                texto+="</td>";
+                texto+="<td>";
+                texto+=lista[x].valorun;
+                texto+="</td>";
+                texto+="<td>";
+                texto+=lista[x].cantidad;
+                texto+="</td>";
+                texto+="<td>";
+                texto+=lista[x].total();
+                texto+="</td>";
+            texto+="</tr>";
+        }
+        texto+="</table>";
+        document.getElementById('lista').innerHTML=texto;
+    }
+
+    class productos{
+        constructor(nombre,valorun,cantidad){
+            this.nombre=nombre;
+            this.valorun=valorun;
+            this.cantidad=cantidad;
+        }
+
+        total(){
+            let res=parseInt(this.valorun)*parseInt(this.cantidad);
+            return res;
+        }
+
+    }
+
+    function limpiar(){
+        document.getElementById('nom').value="";
+        document.getElementById('vun').value="";
+        document.getElementById('can').value="";
+        document.getElementById('nom').value.focus;
+    }
+</script>
+</body>
+</html>
