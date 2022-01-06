@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h1>Llamar archivo JSON</h1>
+
+	Nombre:<input type="text" name="nom" id="nom"><br> 
+	Edad:<input type="text" name="edad" id="edad"><br>
+	Email:<input type="text" name="email" id="email"><br><br>
+	<button onclick="llamar();">Obtener datos</button>
+
+	<script type="text/javascript">
+		function llamar(){
+
+			const req=new XMLHttpRequest();
+			req.onload=function(){
+				const myobj=JSON.parse(this.responseText);
+				document.getElementById('nom').value=myobj[0].name;
+				document.getElementById('edad').value=myobj[0].edad;
+				document.getElementById('email').value=myobj[0].correo;
+			};
+			req.open("GET","words2.json");
+			req.send();
+		}
+
+	</script>
+
+</body>
+</html>
