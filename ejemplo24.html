@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JSON</title>
+</head>
+<body>
+	<h1>JSON desde el server</h1>
+	<p id="p1"></p>
+
+	<script type="text/javascript">
+		const req=new XMLHttpRequest();
+		req.onload=function(){
+			const myobj=JSON.parse(this.responseText);
+			let txt="";
+			for (var i=0;i<myobj.length;i++){
+				txt+=(i+1)+".- "+myobj[i].name+" - "+myobj[i].id+"<br>";
+			}
+			document.getElementById('p1').innerHTML=txt;
+		};
+		req.open("GET","words.json");
+		req.send();
+	</script>
+
+</body>
+</html>
