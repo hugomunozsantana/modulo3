@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JSON</title>
+</head>
+<body>
+	<h1>mi primer JSON</h1>
+	<p id="js"></p>
+	<p>
+		<button onclick="redireccionar();">Ir</button>
+
+		<button onclick="redireccionar2();">Ir 2</button>
+	</p>
+
+	<script type="text/javascript">
+		//creamos un objeto 
+		const myobj={nom:"juan",edad:30,ciudad:"montevideo"};
+		//transformar el objeto creado a un formato JSON de texto plano
+		const myjson=JSON.stringify(myobj);
+		//mostrar el contenido de mi objeto JSON como texto plano en la web
+		document.getElementById('js').innerHTML=myjson;
+
+		function redireccionar(){
+			//pasamos por parámetros el objeto JSON a una web php
+			window.location="demo_json.php?x="+myjson;
+		}
+
+		function redireccionar2(){
+			//pasamos por parámetros el objeto JSON a una web html
+			window.location="ejemplo23.html?x="+myjson+"&otro=33";
+		}
+		
+	</script>
+
+
+</body>
+</html>
