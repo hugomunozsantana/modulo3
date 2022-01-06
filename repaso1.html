@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<button onclick="elemento01();">elemento 1</button><br>
+	<button onclick="elemento02();">elemento 2</button><br>
+	<button onclick="elemento03();">elemento 3</button><br>
+	<button onclick="elemento04();">elemento 4</button><br>
+	nombre: <input type="text" name="nom" id="nom"><br>
+	valor 01: <input type="text" name="v1" id="v1"><br>
+	valor 02: <input type="text" name="v2" id="v2"><br>
+	resultado: <input type="text" name="res" id="res"><br>
+	<button onclick="mostrar();" >mostrar</button>
+
+	<script type="text/javascript">
+		let obj01;
+		let obj02;
+		let obj03;
+		let obj04;
+		function elemento01(){
+			obj01=new elemento();
+			obj01.nombre=document.getElementById('nom').value;
+			obj01.valor1=document.getElementById('v1').value;
+			obj01.valor2=document.getElementById('v2').value;
+			document.getElementById('res').value=obj01.calculo();
+		}
+		function elemento02(){
+			let nombre=document.getElementById('nom').value;
+			let valor1=document.getElementById('v1').value;
+			let valor2=document.getElementById('v2').value;
+			obj02=new elemento(nombre,valor1,valor2);
+			document.getElementById('res').value=obj02.calculo();
+		}
+
+		function elemento03(){
+			obj03=new elemento();
+			obj03.nombre=document.getElementById('nom').value;
+			obj03.valor1=document.getElementById('v1').value;
+			obj03.valor2=document.getElementById('v2').value;
+			document.getElementById('res').value=obj03.calculo();
+		}
+		function elemento04(){
+			obj04=new elemento();
+			obj04.nombre=document.getElementById('nom').value;
+			obj04.valor1=document.getElementById('v1').value;
+			obj04.valor2=document.getElementById('v2').value;
+			document.getElementById('res').value=obj04.calculo();
+		}
+		function mostrar(){
+			alert("obj 01: "+obj01.nombre+" - "+obj01.valor1+" - "+obj01.valor2+" - "+obj01.calculo() );
+			alert("obj 02: "+obj02.nombre+" - "+obj02.valor1+" - "+obj02.valor2+" - "+obj02.calculo() );
+			alert("obj 03: "+obj03.nombre+" - "+obj03.valor1+" - "+obj03.valor2+" - "+obj03.calculo() );
+			alert("obj 04: "+obj04.nombre+" - "+obj04.valor1+" - "+obj04.valor2+" - "+obj04.calculo() );
+		}
+		
+		class elemento{
+			constructor(nom,val1,val2){
+				this.nombre=nom;
+				this.valor1=val1;
+				this.valor2=val2;
+			}
+			calculo(){
+				let res=parseInt(this.valor1)+parseInt(this.valor2);
+				return res;
+			}	
+		}
+
+	</script>
+</body>
+</html>
