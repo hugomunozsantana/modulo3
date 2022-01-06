@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JSON</title>
+</head>
+<body>
+	<h1>Enviar al servidor mediante JSON</h1>
+
+	nombre:<input type="text" name="nom" id="nom"><br>
+	RUT:<input type="text" name="rut" id="rut"><br>
+	Email:<input type="text" name="email" id="email"><br>
+	Fono:<input type="text" name="fono" id="fono"><br><br>
+	<button onclick="enviar();">Enviar datos</button><br><br>
+	<!-- <p id="js"></p> -->
+
+	<script type="text/javascript">
+		function enviar(){
+			let v1=document.getElementById('nom').value;
+			let v2=document.getElementById('rut').value;
+			let v3=document.getElementById('email').value;
+			let v4=document.getElementById('fono').value;
+			const myobj={Nombre:v1,Rut:v2,Email:v3,Fono:v4};
+			//var nom='nombre';
+			//var rut='rut';
+			//var email='email';
+			//var fono='fono'
+			//myobj[nom]=v1;
+			//myobj[rut]=v2;
+			//myobj[email]=v3;
+			//myobj[fono]=v4;
+			const myjson=JSON.stringify(myobj);
+			//document.getElementById('js').innerHTML=myjson;
+
+		
+			window.location="tarea11b.html?x="+myjson;
+
+
+		}
+		
+	</script>
+
+</body>
+</html>
