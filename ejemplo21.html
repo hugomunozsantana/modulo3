@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h1>API Rest ejemplo asincrónico</h1>
+
+	<script type="text/javascript">
+		var req=new XMLHttpRequest();
+		req.open('GET','otro.html',true);
+		req.onreadystatechange=function(aEvt){
+			console.log(aEvt);
+			if(req.readyState==4){
+				if (req.status==200){
+					console.log(req.responseText);
+				}else{
+					console.log("error cargando pagina");
+				}
+			}	
+		};
+		req.send(null);
+	</script>
+
+</body>
+</html>
