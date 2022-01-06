@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>API Rest sincrónicp</title>
+</head>
+<body>
+	<h1>API Rest ejemplo sincrónico</h1>
+	<p id="demo"></p>
+
+	<script type="text/javascript">
+		function sincronica(){
+			var req=new XMLHttpRequest();
+			req.open("GET","http://www.mozilla.org",false);
+			req.send(null);
+			if (req.status==200){
+				console.log(req.responseText);
+				//document.getElementById('demo').innerHTML=req.responseText;
+			}
+		}
+
+		function noHttp(){
+			var req=new XMLHttpRequest();
+			req.open("GET","cualquiera.txt",false);
+			req.send(null);
+			if (req.status==200){
+				//console.log(req.responseText);
+				document.getElementById('demo').innerHTML=req.responseText;
+			}
+		}
+		sincronica();
+		noHttp();
+	</script>
+
+</body>
+</html>
