@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ordenamiento</title>
+</head>
+<body>
+	<h1>Ingreso de productos</h1>
+
+	Nombre:<input type="text" name="nom" id="nom"><br>
+	Valor Unitario:<input type="number" name="val" id="val"><br>
+	Cantidad:<input type="number" name="can" id="can"><br>
+	<button onclick="ingresar();">Ingresar</button><br><br>
+	<p id="mos"></p>
+	Buscar producto:<input type="text" name="pro" id="pro"><br>
+	<button onclick="buscar();">Buscar</button><br>
+	<p id="res"></p>
+
+	<script type="text/javascript">
+		var productos=[];
+		var valor=[];
+		var cantidad=[];
+		function ingresar(){
+			let v1=document.getElementById('nom').value;
+			let v2=document.getElementById('val').value;
+			let v3=document.getElementById('can').value;
+			productos.push(v1);
+			document.getElementById('nom').value="";
+			valor.push(v2);
+			document.getElementById('val').value="";
+			cantidad.push(v3);
+			document.getElementById('can').value="";
+			mostrar();
+		}
+		function buscar(){
+			let p1=document.getElementById('pro').value;
+			for (var i = 0; i < productos.length; i++) {
+				if (productos[i]==p1) {
+					document.getElementById('res').innerHTML="El producto se encuetra disponible";
+				}else{
+					document.getElementById('res').innerHTML="El producto no se encuentra disponible";
+				}
+			}
+		}
+		function mostrar(){
+            let muestra="<table border='1'>";
+            for (var i=0; i< productos.length; i++){
+                  muestra+="<tr><td>"+(i+1)+"</td><td>"+productos[i]+"</td><td>" +valor[i]+"</td><td>"+cantidad[i]+"</td></tr>";
+            }
+            muestra+="</table>";
+            document.getElementById('mos').innerHTML=muestra;
+        }
+		
+
+
+	</script>
+
+</body>
+</html>
