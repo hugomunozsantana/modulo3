@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>burbuja 2</title>
+</head>
+<body>
+	<h3>buebuja 2</h3><br>
+	<button onclick="mostrar();">mostrar</button><br>
+	<button onclick="ordenar();">ordenar</button><br>
+	<p id="demo">
+
+	</p>
+	
+	<script type="text/javascript">
+		let lista=[8,5,2,3,9,7,6,4,1];
+		function ordenar(){
+			let i,k,aux;
+			let largoLista=lista.length;// era "n "
+			for (k = 1; k < largoLista; k++) {
+				for (i = 0; i < (largoLista-k); i++) {
+					if (lista[i]>lista[i+1]){
+						aux=lista[i];
+						lista[i]=lista[i+1];
+						lista[i+1]=aux;
+					}
+					mostrar();
+					//alert('k: '+k+' //  i: '+i+'  // '+lista[i]+'  > ' +lista[i+1]);
+				}
+			}
+		}
+
+		function mostrar(){
+			let tex="<table border='1'>";
+			for (var i = 0; i< lista.length; i++) {
+				tex+="<tr><td>";
+				tex+=lista[i];
+				tex+="</td></tr>";
+			}
+			tex+="</table>";
+			document.getElementById('demo').innerHTML=tex;
+		}
+
+	</script>
+
+</body>
+</html>
