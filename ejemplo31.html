@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>sumatoria y factorial</title>
+</head>
+<body>
+	<h3>sumatoria y factorial</h3>
+<button onclick="sumatoria();">sumatoria</button><br>
+<p id="sum"></p><br>
+<button onclick="factorial();">factorial</button><br>
+<p id="fac"></p><br>
+<button onclick="mostrar();">mostrar</button><br>
+<p id="ma"></p><br>
+<button onclick="sumar();">sumar</button><br>
+<p id="suma"></p><br>
+<script type="text/javascript">
+	let matriz=[
+        [23,65,98],
+        [95,34,12],
+        [64,82,51]
+
+	];
+	function mostrar(){
+		let tex="<table border='1'>";
+		for (var i = 0; i < 3; i++) {
+			tex+="<tr>";
+			for (var j=0; j<3; j++) {
+				tex+="<td>"+matriz[i][j]+"</td>";
+			}
+			tex+="</tr>";
+		}
+		tex+="</table>";
+		document.getElementById('ma').innerHTML=tex;
+	}
+	function sumar(){
+		let sum=0;
+		for (var i=0;i<3;i++) {
+			for (var j=0; j<3; j++) {
+				sum+=matriz[i][j];
+			}
+		}
+		document.getElementById('suma').innerHTML="suma total de elementos de la matriz: "+sum;
+	}
+
+	function sumatoria(){
+		let num=10;
+		let val=0;
+		let tex="<table border='1'>";
+		let linea="";
+		for (var i=1; i <=num; i++) {
+			linea+=i;
+			val=val+i;
+			tex+="<tr><td>"+linea+"</td><td>"+val+"</td></tr>";
+			linea+="+";
+		}
+		tex+="</table>";
+		document.getElementById('sum').innerHTML=tex;
+	}
+	function factorial(){
+		let num=30;
+		let val=1;
+		let tex="<table border='1'>";
+		let linea="";
+		for (var i=1; i <=num; i++) {
+			linea+=i;
+			val=val*i;
+			tex+="<tr><td>"+linea+"</td><td>"+val+"</td></tr>";
+			linea+="+";
+		}
+		tex+="</table>";
+		document.getElementById('fac').innerHTML=tex;
+	}
+
+</script>
+
+</body>
+</html>
