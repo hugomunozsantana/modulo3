@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>primos</title>
+</head>
+<body>
+	<h1>Números primos</h1>
+	<h2>Ingrese un número</h2>
+	Valor:<input type="text" name="val" id="val">
+	<button onclick="primos();">Calcular</button>
+	<p id="res"></p>
+
+	<script type="text/javascript">
+		function primos(){
+			let v1=parseInt(document.getElementById('val').value);
+			let estado=true;
+			for (var j = 2; j < v1; j++) {
+				
+				let res=v1%j;  //aqui calculamos el resto de la division (%=mod)
+				if(res==0){
+					estado=false;
+				}
+			}	
+				if (estado==false) {
+					document.getElementById('res').innerHTML="el número "+v1+" no es primo";
+					document.getElementById('val').value="";
+				}else{
+					document.getElementById('res').innerHTML="el número "+v1+" es primo";
+					document.getElementById('val').value="";
+				}
+				
+		}
+
+
+	</script>
+</body>
+</html>
