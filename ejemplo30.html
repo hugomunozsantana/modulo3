@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>primos</title> <!-- son solo divisible por 1 y por si mismos
+						  // bajo ese concepto los nros primos no son pares
+						  // un numero primo se identifica dividiendolo por todos sus numeros anteriores
+						  // o iguales a su mitad
+						-->
+</head>
+<body>
+	<h1>Primos</h1>
+	<p id="demo"></p>
+
+	<script type="text/javascript">
+		let tex="<table border='1'>";
+		tex+="	<tr><td>1</td></tr>";
+		tex+="	<tr><td>2</td></tr>";
+		for (var i = 3; i<100; i=i+2) {
+			let estado=true;
+			for (var j = 3; j < i; j++) {
+				let res=i%j;
+				if(res==0){
+					estado=false;
+				}
+			}
+			if (estado) {
+				tex+="<tr><td>"+i+"</td></tr>";
+			}
+		}
+		tex+="</table>";
+		document.getElementById('demo').innerHTML=tex;
+		
+	</script>
+
+</body>
+</html>
