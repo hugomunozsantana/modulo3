@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>replit</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <p>
+      <h3>Ingreso de Productos</h3>
+      <h3>Mostrar Lista</h3>
+      <h3>Generar Compra</h3>
+    </p>
+    <p>
+
+      
+      <table>
+        <tr>
+          <td>Ingrese Nombre del Producto</td>
+          <td><input type="text" class="prod" id="prod"></td>
+        </tr>
+        <tr>
+          <td>Ingrese Valor Unitario</td>
+          <td><input type="text" class="vun" id="vun"></td>
+        </tr>
+        <tr>
+          <td>Ingrese Cantidad</td>
+          <td><input type="text" class="can" id="can"></td>
+        </tr>
+      </table>
+
+      <button onclick="ingresar();">INGRESAR</button>
+    </p>
+
+    <p id="muestra"></p>
+
+    <script type="text/javascript">
+    let lista=[];
+    function ingresar(){
+      let prod=document.getElementById('prod').value;
+      let vun=document.getElementById('vun').value;
+      let can=document.getElementById('can').value;
+      let ele=new obj(prod, vun, can);
+      lista.push(ele);
+      mostrar();
+    }
+    function obj(producto, valor, cantidad){
+      this.producto=producto;
+      this.valor=valor;
+      this.cantidad=cantidad;
+    }
+
+    function mostrar(){
+      let contenido="<table border='1'>";
+      contenido+="<tr><td>producto</td><td>Valor Unitario</td><td>Cantidad</td></tr>";
+      for (var i = 0; i <lista.length; i++) {
+        contenido+=  "<tr><td>"+lista[i].producto+
+              "</td><td>"+lista[i].valor+
+              "</td><td>"+lista[i].cantidad+
+              "</td></tr>";
+      }
+      contenido+="</table>";
+      document.getElementById('muestra').innerHTML=contenido;
+    }
+    </script>
+
+  </body>
+</html>
