@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>objetos prototipos</title>
+</head>
+<body>
+	<h1>Objetos prototipos</h1>
+	<h2>Ingreso de datos</h2>
+
+	Nombre:<input type="text" name="nom" id="nom"><br> 
+	Edad:<input type="number" name="edad" id="edad"><br>
+	Profesión:<input type="text" name="prof" id="prof"><br>
+	<button onclick="ingresar();">Ingresar</button><br>
+	<p id="res"></p><br>
+	Email:<input type="text" name="mail" id="mail"><br><br>
+	<button onclick="ingresarMail();">Ingresar Mail</button><br>
+	<p id="mail"></p>
+	
+
+	<script type="text/javascript">
+			
+			function datos(nombre,edad,profesion){
+				this.nombre=nombre;
+				this.edad=edad;
+				this.profesion=profesion;
+			}
+			function ingresar(){
+				let no=document.getElementById('nom').value;
+				let ed=document.getElementById('edad').value;
+				let pr=document.getElementById('prof').value;
+				let mail=document.getElementById('mail').value;
+				let persona=new datos(no,ed,pr);
+				persona.email=mail;
+				document.getElementById('res').innerHTML=persona.nombre+" - "+persona.edad+" - "+persona.profesion;
+				
+			}
+			//function ingresarMail(){
+			//	let mail=document.getElementById('mail').value;
+			//	persona.email=mail;
+			//	document.getElementById('mail').innerHTML=persona.nombre+" - "+persona.edad+" - "+persona.profesion+"- //"+persona.email;
+			//}
+
+				
+	</script>
+			
+
+</body>
+</html>
