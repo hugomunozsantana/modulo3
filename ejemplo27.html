@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ingreso de productos</title>
+</head>
+<body>
+	<h3>Ingreso de productos</h3>
+	<p>
+		Ingrese nombre: <input type="text" name="nom" id="nom"><br>
+		Ingrese cantidad: <input type="text" name="can" id="can"><br>
+		Ingrese valor unitario: <input type="text" name="vun" id="vun"><br>
+		<button onclick="ingresar();">Ingresar</button>
+	</p>
+	<p id="muestra"></p><br>
+	<button onclick="iva();">IVA</button>
+	<p id="iva"></p><br>
+	<button onclick="otra();">Otra</button>
+	<p id="otra"></p>
+
+	<script type="text/javascript">
+		let lista=[];
+		function otra(){
+			document.getElementById('otra').innerHTML=lista[0].ivva();
+		}
+		function iva(){
+			obj.prototype.ivva=function(){
+				let monto=this.total()*0.19;
+				return monto;
+			};
+			let sumaiva=0;
+			let sumatotal=0;
+			let neto=0;
+			for (var i = 0; i <lista.length; i++) {
+				sumaiva+=lista[i].ivva();
+				sumatotal+=lista[i].total();
+			}
+			neto=sumatotal+sumaiva;
+			let txt="bruto: "+sumatotal+"<br>";
+			txt+="iva: "+sumaiva+"<br>";
+			txt+="neto: "+neto+"<br>";
+			document.getElementById('iva').innerHTML=txt;
+
+		}
+		function ingresar(){
+			let no=document.getElementById('nom').value;
+			let ca=document.getElementById('can').value;
+			let vu=document.getElementById('vun').value;
+			let ele=new obj(no,ca,vu);
+			lista.push(ele);
+			limpiar();
+			mostrar();
+
+		}
+		function obj(nombre,cantidad,valorun){
+			this.nombre=nombre;
+			this.cantidad=cantidad;
+			this.valorun=valorun;
+			this.total=function(){
+				let res=parseInt(this.cantidad)*parseInt(this.valorun);
+				return res;
+			};
+		}
+		function mostrar(){
+			let contenido="<table border='1'>";
+			contenido+="<tr><td>Nombre</td><td>Cantidad</td><td>Valor unitario</td><td>Total</td></tr>";
+			for (var i = 0; i <lista.length; i++) {
+				contenido+="<tr><td>"+lista[i].nombre+
+							"</td><td>"+lista[i].cantidad+
+							"</td><td>"+lista[i].valorun+
+							"</td><td>"+lista[i].total()+
+							"</td></tr>";
+			}
+			contenido+="</table>";
+			document.getElementById('muestra').innerHTML=contenido;
+
+		}
+		function limpiar(){
+			document.getElementById('nom').value="";
+			document.getElementById('can').value="";
+			document.getElementById('vun').value="";
+			document.getElementById('nom').focus();
+		}
+	</script>
+
+</body>
+</html>
