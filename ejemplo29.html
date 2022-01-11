@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ordenamiento</title>
+</head>
+<body>
+	<h1>Ingrese valores</h1>
+	<p>
+		valor:<input type="text" name="val" id="val">
+		<button onclick="ingresar();">Ingresar</button>
+	</p><br>
+	<button onclick="ordenar();">mostrar ordenado</button>
+	<p id="demo"></p>
+
+	<script type="text/javascript">
+		let lista=[];
+		function ordenar(){
+			let aux;
+			for (var i=0; i<lista.length; i++) {
+				for (var j=i; j<lista.length; j++) {
+					if (lista[i]>lista[j]) {
+						aux=lista[i];
+						lista[i]=lista[j];
+						lista[j]=aux;
+					}
+				}
+				
+			}
+			mostrar();
+		}
+		function ingresar(){
+			let v1=parseInt(document.getElementById('val').value);
+			lista.push(v1);
+			document.getElementById('val').value="";
+			document.getElementById('val').focus();
+			mostrar();
+		}
+		function mostrar(){
+			let tex="<table border='1'>";
+			for (var i=0; i<lista.length; i++) {
+				tex+="<tr><td>";
+				tex+=lista[i];
+				tex+="</td></tr>";
+			}
+			tex+="</table>";
+			document.getElementById('demo').innerHTML=tex;
+
+		}
+
+	</script>
+
+</body>
+</html>
