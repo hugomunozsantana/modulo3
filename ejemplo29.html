@@ -11,19 +11,21 @@
 		valor:<input type="text" name="val" id="val">
 		<button onclick="ingresar();">Ingresar</button>
 	</p><br>
-	<button onclick="ordenar();">mostrar ordenado</button>
+	<button onclick="ordenar();">mostrar ordenador</button>
 	<p id="demo"></p>
 
 	<script type="text/javascript">
 		let lista=[];
 		function ordenar(){
 			let aux;
-			for (var i=0; i<lista.length; i++) {
-				for (var j=i; j<lista.length; j++) {
-					if (lista[i]>lista[j]) {
-						aux=lista[i];
-						lista[i]=lista[j];
-						lista[j]=aux;
+			for (var i=0; i<lista.length; i++) {	 // indicador de elemento a evaluar
+				for (var j=i; j<lista.length; j++) { //indicador de los elementos a comparar
+					if (lista[i]>lista[j]) { 		 //preguntamos si el elemento a evaluar en mayor que 
+													 // los elementos a comparar
+						aux=lista[i];				 // de ser mayor se guarda el elemeto en la burbuja
+						lista[i]=lista[j];			 // En la posición a evaluar se le asigna el nuevo 
+													 // valor el cual es menor
+						lista[j]=aux;				 // en la posición de recambio se le asigna el valor 							  // anterior a evaluar para que no se pierda el valor
 					}
 				}
 				
