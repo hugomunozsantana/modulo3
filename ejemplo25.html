@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>prototipos de objetos</title>
+</head>
+<body>
+	<h1>Prototipos de objetos</h1>
+	<p id="demo"></p>
+
+	<script type="text/javascript">
+		//primero construimos el objeto prototipo
+		function person(nombre,apellido,edad,c_ojo){
+			this.nombre=nombre;
+			this.apellido=apellido;
+			this.edad=edad;
+			this.c_ojo=c_ojo;
+			this.ncomple=function(){
+				let no=this.nombre+" "+this.apellido;
+				return no.toUpperCase();
+			};
+		}
+		let papa=new person("juan","risopatron",45,"cafe");//instanciamos un objeto llamado papá
+		let mama=new person("maria","Lastarria",35,"azul");//instanciamos un objeto llamado mamá
+
+		mama.edad=40;								//cambiamos el valor del atributo edad del objeto mama
+		papa.nacionalidad="italiano";				//agregamos un nuevo atributo a papa
+		mama.name=function(){						//agregamos un metodo al objeto mama
+			return this.nombre.toUpperCase();		//toUpperCase transforma el contenido de la variable 								 							//de texto en mayúscula
+		};
+
+		let txt="mama: "+mama.ncomple()+"<br>";
+		txt+="edad mama: "+mama.edad+"<br>";
+		txt+="color de ojos mama: "+mama.c_ojo+"<br>";
+		txt+="function name: "+mama.name()+"<br>";
+		txt+="papa: "+papa.nombre+" "+papa.apellido+"<br>";
+		txt+="edad papa: "+papa.edad+"<br>";
+		txt+="color de ojos papa: "+papa.c_ojo+"<br>";
+		txt+="nacionalidad "+papa.nacionalidad;
+		document.getElementById('demo').innerHTML=txt;
+		
+	</script>
+
+</body>
+</html>
