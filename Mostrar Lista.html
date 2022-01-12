@@ -25,7 +25,29 @@
     </table>
 
     <!--<button onclick="mostrar();">Ir a carro de compras</button>-->
-    <p id="muestra"></p>
+    <p id="muestra"></p><br>
+
+    <h3>Modificar Productos</h3>
+    <div id="tablaModProd" name="tablaModProd">
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <td><input required type="number" name="mod" id="mod" placeholder="Ingrese # a modificar"></td>
+          <td><input required type="text" name="modNom" id="modNom" placeholder="ingrese nombre producto"></td>
+          <td><input required type="number" name="modVal" id="modVal" placeholder="ingrese valor"></td>
+          <td><input required type="number" name="modCan" id="modCan" placeholder="ingrese cantidad"></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <button type="button" class="btn btn-primary btn-block" onclick="modificar();">Modificar</button>
+    <br>
+    <h3>Eliminar pruducto por #</h3>
+    <input type="text" name="elProd" id="elProd" placeholder="Ingrese # del producto"><br>
+    <button type="button" class="btn btn-primary btn-block" onclick="eliminar();">Eliminar producto</button>
+
+
     
   <script src="ajaxIngresoProductos.js">
 
