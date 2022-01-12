@@ -81,11 +81,11 @@ function modificar(){
   let newProd=document.getElementById('modNom').value;
   let newPre=document.getElementById('modVal').value;
   let newCant=document.getElementById('modCan').value;
-  if (newProd!="") {
+  if (newProd || newPre || newCant !="") {
     lista[valMod].producto=newProd;
-  }else if (newPre!="") {
+  }else if (newProd || newPre || newCant !="") {
     lista[valMod].valor=newPre;
-  }else if (newCant!="") {
+  }else if (newProd || newPre || newCant !="") {
     lista[valMod].cantidad=newCant;
   }
   //lista[valMod].producto=newProd;
