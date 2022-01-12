@@ -8,20 +8,42 @@
   </head>
   <body>
     <div class="d-grid gap-3">
-  <button type="button" class="btn btn-primary btn-block" onclick="calcular();">Total Compra</button>
+  <button type="button" class="btn btn-primary btn-block" onclick="calcular();">Ir al total de la Compra</button>
+  <h3>Total Compra</h3>
   <table class="table table-hover">
       <thead>
         <tr>
           <th>Bruto</th>
           <th>IVA</th>
-          <th>Neto</th>
+          <th>Total a pagar</th>
         </tr>
       </thead>
       <tbody id="demo2">
       </tbody>
     </table>
-    <!--<button onclick="calcular();">total compra</button>-->
-    <p id="demo2"></p>
+    
+    
+    <h3>Total con descuentos</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Descuento</th>
+          <th>Bruto</th>
+          <th>IVA</th>
+          <th>Total a pagar</th>
+        </tr>
+      </thead>
+      <tbody id="desc1">
+      </tbody>
+    </table>
+    <br>
+    <select name="desc" id="desc">
+      <option value="3">3%</option>
+      <option value="5">5%</option>
+      <option value="8">8%</option>
+      <option value="10">10%</option>
+    </select>
+    <button type="button" class="btn btn-primary btn-block" onclick="descuento();">Aplicar descuento</button><br>
      <script src="ajaxIngresoProductos.js"></script>
   </body>
 </html>
