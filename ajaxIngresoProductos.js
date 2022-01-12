@@ -81,21 +81,19 @@ function modificar(){
   let newProd=document.getElementById('modNom').value;
   let newPre=document.getElementById('modVal').value;
   let newCant=document.getElementById('modCan').value;
-  if (newProd || newPre || newCant !="") {
+  if (newProd && newPre && newCant !="") {
     lista[valMod].producto=newProd;
-  }else if (newProd || newPre || newCant !="") {
     lista[valMod].valor=newPre;
-  }else if (newProd || newPre || newCant !="") {
     lista[valMod].cantidad=newCant;
+    alert("Producto modificado exitosamente");
+    valMod=document.getElementById('mod').value="";
+    newProd=document.getElementById('modNom').value="";
+    newPre=document.getElementById('modVal').value="";
+    newCant=document.getElementById('modCan').value="";
+    mostrar();
+  }else{
+    alert("debe rellenar todos los campos");
   }
-  //lista[valMod].producto=newProd;
-  //lista[valMod].valor=newPre;
-  //lista[valMod].cantidad=newCant;
-  mostrar();
-  valMod=document.getElementById('mod').value="";
-  newProd=document.getElementById('modNom').value="";
-  newPre=document.getElementById('modVal').value="";
-  newCant=document.getElementById('modCan').value="";
 }
 function descuento(){
   obj.prototype.ivva=function(){
